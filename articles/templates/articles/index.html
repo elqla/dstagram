@@ -1,5 +1,29 @@
-{% extends 'base.html' %}
-{% block content %}
-  <p>index</p>
+{% extends 'base.html' %} {% block content %}
+<div class="container d-flex flex-row justify-content-center" style="min-width: 650px">
+  <div class="row">
+    <div class="col-2" style="min-width: 614px; border: solid 1px black; background-color: white">gd</div>
+    <div class="col-1 d-none d-lg-block" style="position: fixed; left: 62%; background: orange">dd</div>
+  </div>
 
+  <!--d-none 숨기기 // d-lg-block lg크기에서 보이기-->
+  <div class="d-none d-lg-block" style="position: fixed; left: 62%; width: 293px; height: 1000px; background: orange; transform: translate(163px, 0)">오른쪽</div>
+</div>
 {% endblock content %}
+<div class="container d-flex flex-row justify-content-center" style="min-width: 650px">
+  <!--max-width:975px;-->
+  <!--lg 이하일때, 가운데정렬-->
+
+  <div style="width: 614px; margin-right: 256px; height: 1000px">
+    <div class="" style="min-width: 614px">
+      <div style="border: solid 1px black; background-color: white">
+        <div>사용자 정보</div>
+        <div>이미지</div>
+        <div>아이콘</div>
+        <div>댓글</div>
+        <div>댓글입력</div>
+      </div>
+    </div>
+    <!--d-none 숨기기 // d-lg-block lg크기에서 보이기-->
+    <div class="d-none d-lg-block" style="position: fixed; left: 62%; width: 293px; height: 1000px; background: orange; transform: translate(163px, 0)">오른쪽</div>
+  </div>
+</div>

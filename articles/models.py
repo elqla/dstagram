@@ -2,18 +2,13 @@ from django.conf import settings
 from django.db import models
 from imagekit.processors import Thumbnail
 from imagekit.models import ProcessedImageField
-
+#USER
 class Article(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) 
-    # user: Articles  1:N 이니까, article_set이 foriegnkey를 가짐
-    # user가 article을 역참조
-    # user는 무슨 글을 썼는지 모르므로, 역참조를 함
-
-    # Article.user가 내가 참조한 유저
-    # user.article_set 나를 참조한 아티클들
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # 유저1: 게시글 N   -- 유저 1에 게시글 무엇인지 알림
+    # user.article_set
+    # table에 user_id 자동으로 생성됨 ### table 확인해보기 __user 가 article을 어떻게 역참조 하는지 
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles')
-    # foreignkey_integerfield
-    #article: like_users이지만, M:N은 like_user와 article이 서로 foriegnkey를 가질 수 있다.
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -38,7 +33,11 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+# bookmark = models.ManyToMany
 class Bookmark(models.Model):
     user = models.ForeignKey(Article, on_delete=models.CASCADE)
+    # user.article_set ??
     title = models.CharField(max_length=20)
     article = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    #북마크 #아티클

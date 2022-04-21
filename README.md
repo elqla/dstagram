@@ -79,6 +79,58 @@ model 만들기
 
 
 
+## 220422
+
+### Hiding elements
+
+| **Screen Size**                           | **Class**                      |
+| ----------------------------------------- | ------------------------------ |
+| Hidden on all (모든 화면에서 숨기기)      | .d-none                        |
+| Hidden only on xs (xs 크기에서만 숨기기)  | .d-none .d-sm-block            |
+| Hidden only on sm (sm 크기에서만 숨기기)  | .d-sm-none .d-md-block         |
+| Hidden only on md (md 크기에서만 숨기기)  | .d-md-none .d-lg-block         |
+| Hidden only on lg (lg 크기에서만 숨기기)  | .d-lg-none .d-xl-block         |
+| Hidden only on xl (xl 크기에서만 숨기기)) | .d-xl-none                     |
+| Visible on all (모든 화면에서 보이기)     | .d-block                       |
+| Visible only on xs (xs 크기에서만 보이기) | .d-block .d-sm-none            |
+| Visible only on sm (sm 크기에서만 보이기) | .d-none .d-sm-block .d-md-none |
+| Visible only on md (md 크기에서만 보이기) | .d-none .d-md-block .d-lg-none |
+| Visible only on lg (lg 크기에서만 보이기) | .d-none .d-lg-block .d-xl-none |
+| Visible only on xl (xl 크기에서만 보이기) | .d-none .d-xl-block            |
+
+[참고](https://velog.io/@leyuri/bootstrap4-브라우저-크기-별-요소-hidden-visible)
+
+navbar 만듦
+
+```django
+#base.html
+<script src="https://kit.fontawesome.com/4369db3be1.js" crossorigin="anonymous"></script> // icon쓰기
+{% load static %}
+<link rel="stylesheet" href="{% static "style.css" %}">
+
+#_navbar include해서 써보기
+{% load static %}
+static/style.css
+```
+
+prittier
+
+```
+prettier.printWidth (default: 200)
+"esbenp.prettier-vscode"
+```
+
+index page 틀 만들기
+
+- 아직 다 못함
+- [참고해서 마저하기](https://ojji.wayful.com/2013/12/HTML-set-Two-Parallel-DIVs-columns.html)
+
+
+
+
+
+
+
 
 
 ##
