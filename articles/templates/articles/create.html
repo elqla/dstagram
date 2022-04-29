@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+  <form action="{% url 'articles:create' %}" method="POST" enctype="multipart/form-data" style="width:650px; margin:auto;">
+    {% csrf_token %}
+    {% bootstrap_form form class="justify-content-center" %}
+
+    <input type="submit">
+  </form>
+{% endblock content %}

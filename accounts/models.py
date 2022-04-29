@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from imagekit.processors import Thumbnail
 from imagekit.models import ProcessedImageField
+from articles.models import Article
 
 class User(AbstractUser):
     followings = models.ManyToManyField('self', symmetrical=False, related_name='followers')
@@ -12,4 +13,14 @@ class User(AbstractUser):
         processors=[Thumbnail(200, 200)],
         format='JPEG',
         options={'quality': 60})
+
+
+
+# user user2
+# a-1  a-2
+# b-1, b-2
+
+# user1  a-1, a-2  b-1
+
+# user2 a-1 b-2
 

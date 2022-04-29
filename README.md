@@ -10,13 +10,13 @@
 
 install
 
-```
+```python
 git ignore
 django==3.2.12
 pip freeze > requirements.txt
 ```
 
-```
+```python
 django-admin startproject dstagram .
 django-admin startapp articles
 django-admin startapp accounts
@@ -26,7 +26,7 @@ pip install pillow
 
 user_setting
 
-```
+```python
 AUTH_USER_MODEL = 'accounts.User'
 abstractuser
 ```
@@ -117,20 +117,17 @@ prittier
 
 ```
 prettier.printWidth (default: 200)
-"esbenp.prettier-vscode"
+"Glavin001.unibeautify-vscode"
+"esbenp.prettier-vscode"  --- 장고 이상해져서 다시 바꿈
 ```
 
 index page 틀 만들기
 
 - 아직 다 못함
 - [참고해서 마저하기](https://ojji.wayful.com/2013/12/HTML-set-Two-Parallel-DIVs-columns.html)
+- 
 
+## 0424
 
+index page 틀 만듦
 
-
-
-
-
-
-
-##

@@ -2,16 +2,21 @@ from django.conf import settings
 from django.db import models
 from imagekit.processors import Thumbnail
 from imagekit.models import ProcessedImageField
+
 #USER
 class Article(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # 유저1: 게시글 N   -- 유저 1에 게시글 무엇인지 알림
-    # user.article_set
     # table에 user_id 자동으로 생성됨 ### table 확인해보기 __user 가 article을 어떻게 역참조 하는지 
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles')
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles', blank=True)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    book_users = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Bookmark', related_name='book_articles', blank=True) # 북마크 테이블 가져오기
+
+    def __str__(self):
+        return self.user, self.content
+
 
 class Picture(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
@@ -34,10 +39,11 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+
 # bookmark = models.ManyToMany
-class Bookmark(models.Model):
-    user = models.ForeignKey(Article, on_delete=models.CASCADE)
-    # user.article_set ??
-    title = models.CharField(max_length=20)
-    article = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+class Bookmark(models.Model): ## 북마크에서 역참조를 할수 없음
+    title = models.CharField(max_length=20) #### title을 쓰기 위해 bookmark를 새로 만들어줌
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    #user.bookmark_set == usr가 bookmark한 pk가 나온다.
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
     #북마크 #아티클
