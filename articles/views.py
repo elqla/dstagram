@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from articles.models import Article, Picture
 from .forms import ArticleForm
@@ -37,6 +37,14 @@ def create(request):
     }
     return render(request, 'articles/create.html', context)
 
-
+@require_safe
 def detail(request, user, article_pk):
-    pass
+    if request.user.is_authenticated:
+        article = get_object_or_404(Article, pk = article_pk)
+
+        context = {
+            'article':article,
+        }
+        return render(request, 'articles/detail.html', context)
+    return redirect('accounts:login')
+

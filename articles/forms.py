@@ -9,5 +9,5 @@ class ArticleForm(forms.ModelForm):
         fields = ('content', 'picture',)
 
 
-# article = models.ForeignKey(Article, on_delete=models.CASCADE)
-# upload_picture 
+# class PictureForm(forms.ModelForm):
+

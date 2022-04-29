@@ -52,7 +52,7 @@ model 만들기
   
   ## media ##
   #settings.py
-  MEDIA_ROOT = BASE_DIR/ 'media'
+  MEDIA_ROOT = BASE_DIR/ 'media'   # 유저 업로드시 자동 폴더생성(실제 db엔 파일 경로 저장됨)
   MEDIA_URL = '/media/'
   INSTALLED_APPS = [
       'imagekit',]
@@ -70,8 +70,8 @@ model 만들기
       article = models.ForeignKey(Article, on_delete=models.CASCADE)
       upload_picture = ProcessedImageField(
           blank=True,
-          upload_to='thumbnails/',
-          processors=[Thumbnail(500, 500)],
+          upload_to='thumbnails/',   # 'thumbnails/%Y/%m/%d/'
+          processors=[Thumbnail(500, 500)],   
           format='JPEG',
           options={'quality': 60})
       #image = models.ImageField(upload_to="images/", blank=True)
@@ -129,5 +129,26 @@ index page 틀 만들기
 
 ## 0424
 
-index page 틀 만듦
+index page의 큰 틀을 잡음
+
+
+
+
+
+
+
+
+
+## 0430
+
+- index.html 게시글 업로드 확인
+- detail.html 만들기 + comment기능 + 기본 user프로필 만들기
+
+
+
+
+
+
+
+
 

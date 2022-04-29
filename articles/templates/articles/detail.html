@@ -1,2 +1,31 @@
 {% extends 'base.html' %}
-{% block content %}{% endblock content %}
+{% block content %}
+
+{% comment %} 735px 지나니까 좌우로 분리됨  (사진 1 글 2 (400) 비율) margin 좌우 50{% endcomment %}
+{% comment %} 글은 1147px 쯤부터 커지기 시작 mx499
+사진은 mx866866  {% endcomment %}
+<div class="card container d-flex justify-content-center" style="width: 90% ">
+  <div class="card-body col-lg-8">
+    <p>{{ article.user }}</p>
+      {% for picture in article.picture_set.all %}
+        <img src="{{ picture.upload_picture.url }}" alt="" style="width: 100%"></a>
+      {% endfor %}
+    <p class="card-text">{{article.content}}</p>
+  </div>
+  <div class="card-comment  col-lg-4" style="width: 50rem;">
+    sdfs
+  </div>
+</div>
+
+
+
+
+<div class="container  justify-content-lg-start" style="max-width:975px;">
+  <div class="row">
+    <div class="" style="height:1000px; width:650px;">
+
+
+  </div>
+</div>
+{% comment %} comment 구현 후 index에 표시해서 코맨트 누르면 넘어오도록 하기 {% endcomment %}
+{% endblock content %}

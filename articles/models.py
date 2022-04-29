@@ -15,7 +15,7 @@ class Article(models.Model):
     book_users = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Bookmark', related_name='book_articles', blank=True) # 북마크 테이블 가져오기
 
     def __str__(self):
-        return self.user, self.content
+        return f'{self.user},{self.content},{self.like_users},{self.created_at},{self.book_users}'
 
 
 class Picture(models.Model):
@@ -28,6 +28,8 @@ class Picture(models.Model):
         options={'quality': 60})
     #image = models.ImageField(upload_to="images/", blank=True)
 
+    def __str__(self):
+        return f'{self.upload_picture}'
 
     
 class Comment(models.Model):

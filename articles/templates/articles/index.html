@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
   <div class="container d-flex flex-row justify-content-center justify-content-lg-start" style="max-width:975px;">
     <div class="row">
-      <div class="bg-success" style="height:1000px; width:650px;">
+      <div class="" style="height:1000px; width:650px;">
         {% for article in articles %}
           <p>{{ article.user }}</p>
           <p>{{ article.content }}</p>
+          {% for picture in article.picture_set.all %}
+            <img src="{{ picture.upload_picture.url }}" alt="" style="width: 100%"></a>
         {% endfor %}
-      </div>
-    </div>
-    <div class="d-none d-lg-block position-fixed bg-primary" style="height:200px; width:325px; left:50%; transform: translate(163px, 0);">
-      <p>오른쪽</p>
+      {% endfor %}
     </div>
   </div>
+  <div class="d-none d-lg-block position-fixed bg-primary" style="height:200px; width:325px; left:50%; transform: translate(163px, 0);">
+    <p>오른쪽</p>
+  </div>
+</div>
+
 {% endblock content %}
