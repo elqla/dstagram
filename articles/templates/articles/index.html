@@ -5,11 +5,15 @@
     <div class="row">
       <div class="" style="height:1000px; width:650px;">
         {% for article in articles %}
-          <p>{{ article.user }}</p>
-          <p>{{ article.content }}</p>
-          {% for picture in article.picture_set.all %}
-            <img src="{{ picture.upload_picture.url }}" alt="img" style="width: 100%"></a>
-        {% endfor %}
+          <div class="card">
+            <p>{{ article.user }}</p>
+            <p>{{ article.content }}</p>
+            {% for picture in article.picture_set.all %}
+              <img src="{{ picture.upload_picture.url }}" alt="img" style="width: 100%"></a>
+          {% endfor %}
+          <a href="{% url 'articles:detail' article.pk %}">상세페이지</a>
+        </div>
+        <br>
       {% endfor %}
     </div>
   </div>

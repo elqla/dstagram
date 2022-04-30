@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
 from articles.models import Article, Picture
-from .forms import ArticleForm
-from django.views.decorators.http import require_safe, require_http_methods
+from .forms import ArticleForm, CommentForm
+from django.views.decorators.http import require_safe, require_http_methods, require_POST
 from django.contrib.auth.decorators import login_required
 
 
@@ -38,13 +38,30 @@ def create(request):
     return render(request, 'articles/create.html', context)
 
 @require_safe
-def detail(request, user, article_pk):
+def detail(request, pk):
     if request.user.is_authenticated:
-        article = get_object_or_404(Article, pk = article_pk)
-
+        article = get_object_or_404(Article, pk=pk)
+        comment_form = CommentForm()
+        comments = article.comment_set.all()
         context = {
             'article':article,
+            'comment_form':comment_form,
+            'comments':comments,
         }
         return render(request, 'articles/detail.html', context)
     return redirect('accounts:login')
+
+@require_http_methods(['GET', 'POST'])
+def comment_create(request, pk):
+    if request.user.is_authenticated:
+        article = get_object_or_404(Article, pk = pk)
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.article = article
+            comment.user = request.user
+            comment.save()
+        return redirect('articles:detail', article.pk)
+    return redirect('accounts:login')
+
 

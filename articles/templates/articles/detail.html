@@ -1,21 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
-{% comment %} 735px 지나니까 좌우로 분리됨  (사진 1 글 2 (400) 비율) margin 좌우 50{% endcomment %}
-{% comment %} 글은 1147px 쯤부터 커지기 시작 mx499
-사진은 mx866866  {% endcomment %}
-<div class="card container d-flex justify-content-center" style="width: 90% ">
-  <div class="card-body col-lg-8">
-    <p>{{ article.user }}</p>
+<div class="row m-auto " style="width:80%; max-width: 975px">
+  <div class="col-lg-8" width="100%"> 
       {% for picture in article.picture_set.all %}
-        <img src="{{ picture.upload_picture.url }}" alt="" style="width: 100%"></a>
+      <img src="{{ picture.upload_picture.url }}" alt="img" style="width: 100%; height:100%;"></a>
       {% endfor %}
-    <p class="card-text">{{article.content}}</p>
   </div>
-  <div class="card-comment  col-lg-4" style="width: 50rem;">
-    sdfs
+  {% comment %} style로 width넣을때랑 그냥 넣을때랑 다르게 들어간다. {% endcomment %}
+  <div class="col-lg-4 position-relative" width="100%" style="background: red;">
+      <p>{{ article.user }}</p>
+      <p class="card-text">{{article.content}}</p>
+          {% if comments %}
+          {% for comment in comments %}
+            {{ comment.user }}
+            {{ comment.content }}
+            {% comment %} comment.likeuser {% endcomment %}           
+            <br>
+          {% endfor %}
+          {% endif %}
+      <div class="position-absolute fixed-bottom">
+      <hr>
+      {% comment %} 좋아요, 댓글창, 공유 {% endcomment %}
+      {% comment %} 좋아요한 사람 수 {% endcomment %}
+      {{ article.created_at| date:"Y년 m월 d일" }}
+
+      <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+        {% csrf_token %}
+        <label for="comment_create">
+        {{comment_form}}</label>
+        {% comment %} button {% endcomment %}
+        <input type="submit" value="제출" name="comment_create">
+      </form>  
+
+      </div>
   </div>
 </div>
-
 {% comment %} comment 구현 후 index에 표시해서 코맨트 누르면 넘어오도록 하기 {% endcomment %}
 {% endblock content %}

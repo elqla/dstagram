@@ -1,12 +1,22 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+
+/* 적용 안되는듯 _! */
 .navicon{
   box-sizing: border-box;
   color: black;
   width: 24px;
-
 }
+
+
 
 body{
   background-color:#FAFAFA;
 }
 
-
+.card-comment{
+  background-color: red;
+}

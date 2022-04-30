@@ -23,6 +23,7 @@ class Picture(models.Model):
     upload_picture = ProcessedImageField(
         blank=True,
         upload_to='thumbnails/',
+        # processors = [ResizeToFill(120, 60)],
         processors=[Thumbnail(500, 500)],
         format='JPEG',
         options={'quality': 60})

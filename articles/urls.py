@@ -5,6 +5,8 @@ app_name='articles'
 urlpatterns = [
     path('', views.index, name="index"),
     path('create/', views.create, name="create"),
-    path('detail/<user>/<int:article_pk>', views.detail, name="detail"),
+    # 삭제, 수정
+    path('<int:pk>/', views.detail, name="detail"),
+    path('<int:pk>/comments/', views.comment_create, name="comment_create"),
     
 ]
