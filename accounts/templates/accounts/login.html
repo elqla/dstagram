@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load bootstrap5 %}
 {% block content %}
-  <form action="{% url 'accounts:login' %}" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="login">
-  </form>
+  <div class="card" style="width:300px; margin:100px auto;">
+    <div class="card-body">
+      <form action="{% url 'accounts:login' %}" method="POST">
+        <h2 style="margin-bottom:20px;">login</h2>
+        {% csrf_token %}
+        {% bootstrap_form form class="justify-content-center " %}
+        <input type="submit" value="login">
+      </form>
+    </div>
+  </div>
 {% endblock content %}

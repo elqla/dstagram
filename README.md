@@ -113,7 +113,7 @@ navbar 만듦
 static/style.css
 ```
 
-prittier
+prettier
 
 ```
 prettier.printWidth (default: 200)
@@ -124,31 +124,58 @@ prettier.printWidth (default: 200)
 index page 틀 만들기
 
 - 아직 다 못함
+
 - [참고해서 마저하기](https://ojji.wayful.com/2013/12/HTML-set-Two-Parallel-DIVs-columns.html)
-- 
+
+  
 
 ## 0424
 
 index page의 큰 틀을 잡음
 
+- 좌측은 스크롤이 되지만, 우측은 고정되어있어야 한다.   __~~동기의 도움받음~~_
+- lg-start로 lg 이상일땐 좌측정렬해서 `차례대로` div가 존재하도록  ! 
+
+```html
+<div class="container d-flex flex-row justify-content-center justify-content-lg-start" style="max-width:975px;">
+   <div class="row">
+      <div class="" style="height:1000px; width:650px;">
+        {% for article in articles %}
+        {% endfor %}
+    </div>
+  </div>
+  <div class="d-none d-lg-block position-fixed bg-primary" style="height:200px; width:325px; left:50%; transform: translate(163px, 0);">
+    <p>오른쪽</p>
+  </div>
+</div>
+```
 
 
 
 
 
+
+
+## 0429
+
+- index.html 게시글 업로드 확인완료
+- detial.html 게시글 card > div div 로 나누기 완료 (+반응형)
+- 다음에 할 것 - > detail.html 만들기 + comment기능 + 기본 user프로필 만들기
 
 
 
 ## 0430
 
-- index.html 게시글 업로드 확인
-- detail.html 만들기 + comment기능 + 기본 user프로필 만들기
+- login_form 삽입 
 
 
 
+- comment기능 간단히 구현하기
 
+- index.html 완벽
 
+- sign_up ? 가입..?
 
+  
 
-
-
+- 프로필 편집====user update - 자기 프로필 사진 넣어서 user 수정 할 수 있게
