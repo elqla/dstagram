@@ -168,14 +168,21 @@ index page의 큰 틀을 잡음
 
 - login_form 삽입 
 
+- comment기능 구현
+
+- detail.html
+
+  -  md이하일땐 카드 형태로 . 이상일땐 div하나당 col-8, col-4 넣어서 분리되는 기능 구현
+
+    \+ 문제점 발견 : 사진이 1:1 이 아님
+
+- _navbar 
+  - min-width 지워 반응형으로 바꿈
+  - search에 `d-none d-md-block` 적용 (md에서부터 보임)
 
 
-- comment기능 간단히 구현하기
 
-- index.html 완벽
+- 다음에 할 것-> signup +  profile.html 프로플 편집 및 프로필사진 넣는 기능 + 프로필 필요한 곳에 넣어주기 
+- 사진비율
+- index.html + detail.html 
 
-- sign_up ? 가입..?
-
-  
-
-- 프로필 편집====user update - 자기 프로필 사진 넣어서 user 수정 할 수 있게
