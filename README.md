@@ -186,3 +186,5 @@ index page의 큰 틀을 잡음
 - 사진비율
 - index.html + detail.html 
 
+https://han-py.tistory.com/87
+https://gorillaz.tistory.com/10

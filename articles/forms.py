@@ -12,7 +12,7 @@ class ArticleForm(forms.ModelForm):
 # class PictureForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
-    content = forms.CharField()
+    content = forms.CharField(label='')
     class Meta:
         model = Comment
         fields = ('content',)
