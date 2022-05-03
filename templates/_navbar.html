@@ -15,7 +15,7 @@
         <img src="{% static 'accounts/default_profile.jpg' %}" style="width: 24px" class="navicon rounded-circle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"/>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-            <a class="dropdown-item" href="#">profile</a>
+            <a class="dropdown-item" href="{% url 'accounts:profile' user %}  ">profile</a>
           </li>
           <li>
             <a class="dropdown-item" href="#">bookmark</a>

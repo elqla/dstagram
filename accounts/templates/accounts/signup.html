@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+  <div class="card" style="max-width:500px; margin:100px auto;">
+    <div class="card-body">
+      <form action="{% url 'accounts:signup' %}" method="POST">
+        <h2 style="margin-bottom:20px;">signup</h2>
+        {% csrf_token %}
+        {% bootstrap_form form class="justify-content-center" %}
+        <input class="btn" type="submit" value="signup" style="background-color: rgb(108,163,213)">
+      </form>
+    </div>
+  </div>
+{% endblock content %}

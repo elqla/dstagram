@@ -1,9 +1,10 @@
+from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.views.decorators.http import require_http_methods, require_POST, require_safe
-
+from .forms import CustomUserCreationForm
 @require_http_methods(['GET', 'POST'])
 def login(request):
     if request.user.is_authenticated:
@@ -27,7 +28,25 @@ def logout(request):
         return redirect('articles:index')
 
 @require_safe
-def profile(request):
+def profile(request, user):
     if request.user.is_authenticated:
-        
-        pass
+
+        return render(request, 'accounts/profile.html')
+
+
+@require_http_methods(['GET', 'POST'])
+def signup(request):
+    if request.user.is_authenticated:
+        return redirect('articles:index')
+    if request.method=='POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('articles:index')            
+    else:
+        form = CustomUserCreationForm()
+    context = { 
+        'form':form,
+    }  
+    return render(request, 'accounts/signup.html', context)

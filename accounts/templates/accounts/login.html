@@ -8,8 +8,12 @@
         <h2 style="margin-bottom:20px;">login</h2>
         {% csrf_token %}
         {% bootstrap_form form class="justify-content-center " %}
-        <input type="submit" value="login">
+        <input class="btn" type="submit" value="로그인" style="background-color: rgb(232,240,254)">
+        <hr>
+        <a class="btn" href="{% url 'accounts:signup' %}" style="text-decoration:none; color:black; background-color: rgb(232,240,254);">회원가입</a>
+
       </form>
     </div>
   </div>
+
 {% endblock content %}
