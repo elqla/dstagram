@@ -3,7 +3,20 @@
 {% comment %} 32 32 profile {% endcomment %}
 
 {% block content %}
-150
-<img src="accounts/default_profile.jpg" alt="img" width="150">
+<div class="container d-flex flex-row justify-content-lg-start" style="max-width:975px;">
 
+<div style="padding: 30px 20px;">
+  <div class="d-flex flex-row">
+    <img src={% static 'accounts/default_profile.jpg' %} alt="img" width="150" class="flex-grow-1">
+    <div class="flex-grow-2" style="border: 1px solid black; max-width:613;">
+      sdfdfsssssssssssssssssssssssssssssssssssssslore Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias dicta laboriosam voluptas repellat animi quasi dolorum, dolor voluptate vel minima accusantium culpa! Quia unde nisi perferendis voluptas quo magnam commodi!
+      {{user}}
+      {{person}}
+      <form action="{% url 'accounts:editprofile' %}"></form>
+
+    </div>
+
+  </div>
+</div>
+</div>
 {% endblock content %}

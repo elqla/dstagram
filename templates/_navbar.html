@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="height: 60px">
+<nav class="navbar navbar-expand-lg sticky-top" style="height: 60px; background-color:white; box-shadow: 0 0 1px black;">
   <!-- min-width: 650px;-->
   <div class="container" style="justify-content: space-between; flex-wrap: nowrap; max-width: 975px;">
     <a class="navbar-brand" href="{% url 'articles:index' %}"><img style="width: 100px" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="img"/></a>
@@ -15,7 +15,7 @@
         <img src="{% static 'accounts/default_profile.jpg' %}" style="width: 24px" class="navicon rounded-circle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"/>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-            <a class="dropdown-item" href="{% url 'accounts:profile' user %}  ">profile</a>
+            <a class="dropdown-item" href="{% url 'accounts:profile' user %} ">profile</a>
           </li>
           <li>
             <a class="dropdown-item" href="#">bookmark</a>
