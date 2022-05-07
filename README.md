@@ -197,3 +197,11 @@ https://gorillaz.tistory.com/10
 - 다음에 할 것  -> profile edit 이용해 프로필사진 설정
   - profile.html 사진 가져오기 + index 및 detail에도 사진 넣어주기
   - 좋아요기능구현
+
+
+
+
+
+## 0505
+
+- 

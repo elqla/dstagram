@@ -4,6 +4,11 @@ from imagekit.processors import Thumbnail
 from imagekit.models import ProcessedImageField
 from articles.models import Article
 
+
+def user_directory_path(instance, filename):
+    return f'{instance.name}/%Y/%m/%d/'
+
+
 class User(AbstractUser):
     followings = models.ManyToManyField('self', symmetrical=False, related_name='followers')
     #symmetrical: 서로참조
@@ -12,15 +17,6 @@ class User(AbstractUser):
         upload_to='profile/',
         processors=[Thumbnail(200, 200)],
         format='JPEG',
-        options={'quality': 60})
-
-
-
-# user user2
-# a-1  a-2
-# b-1, b-2
-
-# user1  a-1, a-2  b-1
-
-# user2 a-1 b-2
-
+        options={'quality': 60},
+        default='../static/accounts/default_profile.jpg'
+        )

@@ -12,7 +12,9 @@
       sdfdfsssssssssssssssssssssssssssssssssssssslore Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias dicta laboriosam voluptas repellat animi quasi dolorum, dolor voluptate vel minima accusantium culpa! Quia unde nisi perferendis voluptas quo magnam commodi!
       {{user}}
       {{person}}
-      <form action="{% url 'accounts:editprofile' %}"></form>
+      <form action="{% url 'accounts:editprofile' user %}">
+        <button>프로필편집</button>
+      </form>
 
     </div>
 

@@ -1,7 +1,7 @@
-import imp
+from django import forms
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.contrib.auth import get_user_model
-
+from .models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -10,7 +10,11 @@ class CustomUserCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields
 
 
+
 class CustomUserChangeForm(UserChangeForm):
-    class Meta:
+    profile_picture = forms.ImageField(label='프로필 사진 바꾸기')
+    class Meta(UserChangeForm.Meta):
         model = get_user_model()
-        fields = '__all__'
+        fields = ('username', 'profile_picture',) #'__all__' 
+
+# 

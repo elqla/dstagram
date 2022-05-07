@@ -4,8 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.views.decorators.http import require_http_methods, require_POST, require_safe
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth  import get_user_model
+from django.contrib.auth.decorators import login_required
 
 @require_http_methods(['GET', 'POST'])
 def login(request):
@@ -56,6 +57,23 @@ def signup(request):
     }  
     return render(request, 'accounts/signup.html', context)
 
-# def editprofile(request):
-#     pass
-    # return render(request, 'accounts/editprofile.html')
+@login_required
+@require_http_methods(['GET', 'POST'])
+def editprofile(request, user):
+    User = get_user_model()
+    profile = get_object_or_404(User, username=user)
+    if request.method=='POST':
+        form = CustomUserChangeForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.profile_picture = profile
+            profile.upload_picture = form.cleaned_data.get('picture')
+            profile = form.save()
+            return redirect('accounts:profile')
+    else:
+        form = CustomUserChangeForm()
+    context = {
+        'form':form,
+    }
+    return render(request, 'accounts/editprofile.html', context)

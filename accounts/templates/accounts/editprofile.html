@@ -1,2 +1,9 @@
 {% extends 'base.html' %}
-{% block content %}{% endblock content %}
+{% load bootstrap5 %}
+
+{% block content %}
+<form action="{% url 'accounts:editprofile' user %}">
+  {% bootstrap_form form class="justify-content-center" %}
+  <input class="btn" type="submit" value="제출" style="background-color: rgb(232,240,254)">
+{% comment %} {{form.as_p}} {% endcomment %}</form>
+{% endblock content %}
