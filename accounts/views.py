@@ -65,15 +65,15 @@ def editprofile(request, user):
     if request.method=='POST':
         form = CustomUserChangeForm(request.POST, request.FILES)
         if form.is_valid():
-            profile = form.save(commit=False)
             profile.user = request.user
             profile.profile_picture = profile
             profile.upload_picture = form.cleaned_data.get('picture')
             profile = form.save()
-            return redirect('accounts:profile')
+            return redirect('accounts:profile', user)
     else:
         form = CustomUserChangeForm()
     context = {
         'form':form,
     }
     return render(request, 'accounts/editprofile.html', context)
+
